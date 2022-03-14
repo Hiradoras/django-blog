@@ -7,6 +7,7 @@ from .models import Post
 class HomeView(ListView):
     model = Post
     template_name = 'blog/home.html'
+    ordering = ['-date_added']
 
 
 class PostDetailView(DetailView):

@@ -5,12 +5,12 @@
 {% endblock title %}
 
 {% block content %}
-
+<div class="container">
 <h1>{{post.title}}</h1>
 <small>by: <b>{{post.author.first_name}} {{post.author.last_name}}</b> / <i>{{post.author}}</i>
 </small>
 
 <br/> <hr>
-<h3>{{post.body|safe}}</h3>
-
+<p>{{post.body|safe}}</p>
+</div>
 {% endblock content %}
