@@ -14,6 +14,7 @@ Home
         {{post.date_added}}
         <br/>
         {{post.body|safe}}
+        <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
     </li>
     {% endfor %}
 </ul>
