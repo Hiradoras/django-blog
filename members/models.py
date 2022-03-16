@@ -8,7 +8,6 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField()
-    # born_date = models.DateTimeField(null=True, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
     # Social Links
@@ -19,4 +18,4 @@ class Profile(models.Model):
     pinterest_url = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.user_name
+        return self.user
