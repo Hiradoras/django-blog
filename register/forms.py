@@ -8,6 +8,8 @@ from blog.models import Profile
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
+    first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class' : 'form-control'}))
     class Meta:
         model = User
         fields = [

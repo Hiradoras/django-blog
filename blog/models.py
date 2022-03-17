@@ -1,3 +1,4 @@
+from tokenize import blank_re
 from django.urls import reverse
 import profile
 from django.db import models
@@ -17,7 +18,7 @@ class Post(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField((""), upload_to='images/profile_pic_images')
+    profile_pic = models.ImageField((""), upload_to='images/profile_pic_images', null=True, blank=True)
 
     bio = models.TextField(null=True, blank=True)
     website_url = models.CharField(max_length=255, null=True, blank=True)
