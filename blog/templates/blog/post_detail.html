@@ -5,11 +5,10 @@
 {% endblock title %}
 
 {% block content %}
-
+<br/>
 <h1>{{post.title}}</h1>
 <small>by: <b>{{post.author.first_name}} {{post.author.last_name}}</b> / <i>{{post.author}}</i>
 </small>
-
 <br/> <hr>
 <p>{{post.body|safe}}</p>
 

@@ -5,16 +5,19 @@ Woermind Home
 {% endblock title %}
 
 {% block content %}
-
+<style>
+    h1{text-align: center;}
+</style>
     <h1>Posts</h1>
+    <hr>
     <ul>
         {% for post in object_list %}
         <li>
-            {{post.author.first_name}} {{post.author.last_name}} / 
-            {{post.title}} / 
-            {{post.date_added}}
-            <br/>
+            <h4>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="#">{{post.author}}</a></i></h4> 
+            <h5><u>{{post.title}}</u></h5>
             {{post.body|safe}}
+            {{post.date_added}}
+            <br/><br/>
             <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
             <hr>
         </li>
