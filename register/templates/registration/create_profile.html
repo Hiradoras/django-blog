@@ -7,14 +7,20 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-        <h1>New Profile Page</h1>
-        <br/><br/>
+    {% if user.profile %}
+    <p>You already have a profile.</p>
+    {% else %}
+    <h1>New Profile Page</h1>
+    <br/><br/>
 
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p}}
-            <button  class="btn btn-secondary">Create Profile Page</button>
-            <br/><br/>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media }}
+        {{ form.as_p}}
+        <button  class="btn btn-secondary">Create Profile Page</button>
+        <br/><br/>
+    {% endif %}
+        
 {% else %}
     You are not logged in
 {% endif %}
