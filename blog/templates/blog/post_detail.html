@@ -28,7 +28,24 @@
         <div class="card-body">
           <h5 class="card-title">{{post.author}} / <small>{{post.author.first_name}} {{post.author.last_name}}</small></h5>
           <p class="card-text">{{post.author.profile.bio}}</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          {% if post.author.profile.website_url %}
+            <p class="card-text"><small class="text-muted"><a href="{{post.author.profile.website_url}}">Website</a> |</small></p>     
+          {% endif %}
+          {% if post.author.profile.facebook_url %}
+            <p class="card-text"><small class="text-muted"><a href="{{post.author.profile.facebook_url}}">Facebook</a> |</small></p>          
+          {% endif %}
+          {% if post.author.profile.twitter_url %}
+            <p class="card-text"><small class="text-muted"><a href="{{post.author.profile.twitter_url}}">Twitter</a> |</small></p>     
+          {% endif %}
+          {% if post.author.profile.instagram_url %}
+            <p class="card-text"><small class="text-muted"><a href="{{post.author.profile.instagram_url}}">Instagram</a> |</small></p>          
+          {% endif %}
+          {% if post.author.profile.pinterest_url %}
+            <p class="card-text"><small class="text-muted"><a href="{{post.author.profile.pinterest_url}}">Pinterest</a> |</small></p>        
+          {% endif %}
+          {% if post.author.profile.other_url %}
+            <p class="card-text"><small class="text-muted"><a href="{{post.author.profile.other_url}}">Other</a></small> |</p>          
+          {% endif %}
         </div>
       </div>
     </div>
