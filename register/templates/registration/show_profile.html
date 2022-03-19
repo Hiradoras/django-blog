@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load static %}
 
 {% block title %}
 
@@ -7,9 +7,53 @@
 
 {% endblock %}
 
-
-
 {% block content %}
+
+
+
+
+<p></p>
+
+<div class="container">
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if user.profile.profile_pic %}
+            <img src="{{user.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="...">
+        {% else %}
+            <img src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle">
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">{{user.profile.bio}}</p>
+          {% if user.profile.website_url %}
+          <p class="card-text"><small class="text-muted"><a href="{{user.profile.website_url}}">Website</a></small> | </p>
+          {% endif %}
+          {% if user.profile.facebook_url %}
+          <p class="card-text"><small class="text-muted"><a href="{{user.profile.facebook_url}}">Facebook</a></small> | </p>
+          {% endif %}
+          {% if user.profile.twitter_url %}
+          <p class="card-text"><small class="text-muted"><a href="{{user.profile.twitter_url}}">Twitter</a></small> | </p>
+          {% endif %}
+          {% if user.profile.instagram_url %}
+          <p class="card-text"><small class="text-muted"><a href="{{user.profile.instagram_url}}">Instagram</a></small> | </p>
+          {% endif %}
+          {% if user.profile.pinterest_url %}
+          <p class="card-text"><small class="text-muted"><a href="{{user.profile.pinterest_url}}">Pinterest</a></small> | </p>
+          {% endif %}
+          {% if user.profile.other_url %}
+          <p class="card-text"><small class="text-muted"><a href="{{user.profile.other_url}}">Other</a></small></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 {% endblock  %}
     

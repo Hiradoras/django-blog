@@ -16,6 +16,8 @@ Woermind Home
   <div class="row">
     <div class="col">
       <!-- Profile Card -->
+{% if user.is_authenticated %}
+{% if user.profile %}
 <div class="card" style="width: 18rem;">
   {% if user.profile.profile_pic %}
 <img src="{{user.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="...">
@@ -25,12 +27,15 @@ Woermind Home
   <div class="card-body">
     <h6 class="card-title">{{user}} - {{user.first_name}} {{user.last_name}}</h6>
     <p class="card-text">{{user.profile.bio}}</p>
+    
     <a href="{% url 'show-profile' user.profile.id %}" class="btn btn-primary">Go Profile</a>
   </div>
 </div>
 <!-- Profile Card -->
     </div>
     <div class="col-6">
+    {% endif %}
+    {% endif %}
       
 <!-- Posts -->
 <ul>
