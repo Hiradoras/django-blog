@@ -41,7 +41,7 @@ Woermind Home
 <ul>
   {% for post in object_list %}
   <li>
-      <h4>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="#">{{post.author}}</a></i></h4> 
+      <h4>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="{% url 'show-profile' post.author.profile.id %}">{{post.author}}</a></i></h4> 
       <h5><u>{{post.title}}</u></h5>
       {{post.body|safe}}
       {{post.date_added}}

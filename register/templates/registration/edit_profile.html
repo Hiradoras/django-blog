@@ -18,7 +18,8 @@ Edit Profile
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy}}
-                <button  class="btn btn-secondary">Update Profile Page</button>
+                <hr>
+                <button  class="btn btn-primary">Update Profile</button>
         </div>
     {% else %}
         You can not edit another user's page

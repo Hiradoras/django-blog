@@ -30,7 +30,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {% if user.is_authenticated %}
                   {% if user.profile %}
-                  <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                  <li><a class="dropdown-item" href="{% url 'edit-profile' user.profile.id %}">Edit Profile</a></li>
 
                   {% else %}
                     <li><a class="dropdown-item" href="{% url 'create-profile' %}">Create Profile</a></li>
