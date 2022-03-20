@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import ProfileForm, RegisterForm
+from django.urls import reverse_lazy
+from .forms import EditProfileForm, ProfileForm, RegisterForm
 from blog.models import Profile
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
+from django.views import generic
 
 
 
@@ -39,3 +41,26 @@ class ShowProfilePageView(DetailView):
 
         context['page_user'] = page_user
         return context
+
+
+class EditProfilePageView(generic.UpdateView):
+    model =Profile
+    template_name = 'registration/edit_profile.html'
+    fields = [
+        'bio',
+        'profile_pic',
+        'website_url',
+        'facebook_url',
+        'twitter_url',
+        'instagram_url',
+        'pinterest_url'
+        ]
+    success_url = reverse_lazy('home')
+
+class UserEditView(generic.UpdateView):
+    form_class = EditProfileForm
+    template_name = 'registration/edit_user.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
+        return self.request.user

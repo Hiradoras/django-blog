@@ -27,6 +27,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{post.author}} / <small>{{post.author.first_name}} {{post.author.last_name}}</small></h5>
+          <p class="card-footer bg-transparent border-success">{{post.author.profile.bio}}</p>
           <p class="card-text"><small class="text-muted"><a class="btn btn-info" href="{% url 'show-profile' post.author.profile.id %}">Go Profile</a></small></p>
           {% if post.author.profile.website_url %}
             <a href="{{post.author.profile.website_url}}">Website</a> |     
@@ -46,7 +47,7 @@
           {% if post.author.profile.other_url %}
             <a href="{{post.author.profile.other_url}}">Other</a>
           {% endif %}
-          <p class="card-footer bg-transparent border-success">{{post.author.profile.bio}}</p>
+          
         </div>
       </div>
     </div>

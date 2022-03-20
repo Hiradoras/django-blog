@@ -50,6 +50,9 @@
       </div>
     </div>
   </div>
+  {% if profile.user.id == user.id %}
+  <a href="{% url 'edit-profile' profile.id %} " class="btn btn-primary">Edit Profile</a>
+  {% endif %}
 </div>
 
 
