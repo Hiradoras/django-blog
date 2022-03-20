@@ -29,22 +29,22 @@
           <h5 class="card-title">{{profile}} / {{profile.user.first_name}} {{profile.user.last_name}}</h5>
           <p class="card-text">{{profile.bio}}</p>
           {% if profile.website_url %}
-          <p class="card-footer bg-transparent border-success"><small class="text-muted"><a href="{{profile.website_url}}">Website</a></small> | </p>
+          <a href="{{profile.website_url}}">Website</a>| 
           {% endif %}
           {% if profile.facebook_url %}
-          <p class="card-footer bg-transparent border-success"><small class="text-muted"><a href="{{profile.facebook_url}}">Facebook</a></small> | </p>
+          <a href="{{profile.facebook_url}}">Facebook</a> | 
           {% endif %}
           {% if profile.twitter_url %}
-          <p class="card-footer bg-transparent border-success"><small class="text-muted"><a href="{{profile.twitter_url}}">Twitter</a></small> | </p>
+          <a href="{{profile.twitter_url}}">Twitter</a> | 
           {% endif %}
           {% if profile.instagram_url %}
-          <p class="card-footer bg-transparent border-success"><small class="text-muted"><a href="{{profile.instagram_url}}">Instagram</a></small> | </p>
+          <a href="{{profile.instagram_url}}">Instagram</a> | 
           {% endif %}
           {% if profile.pinterest_url %}
-          <p class="card-footer bg-transparent border-success"><small class="text-muted"><a href="{{profile.pinterest_url}}">Pinterest</a></small> | </p>
+          <a href="{{profile.pinterest_url}}">Pinterest</a> | 
           {% endif %}
           {% if profile.other_url %}
-          <p class="card-footer bg-transparent border-success"><small class="text-muted"><a href="{{profile.other_url}}">Other</a></small></p>
+          <a href="{{profile.other_url}}">Other</a>
           {% endif %}
         </div>
       </div>

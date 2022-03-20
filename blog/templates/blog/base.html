@@ -68,7 +68,10 @@
       <div class='container'>
         <div>
           {% if user.is_authenticated %}
-  
+            {% if user.profile.id %}
+            {% else %}
+            <p>You don't have a profile yet. You need to create a profile to create posts or make comments. You can create a profile <a href= "{% url 'create-profile' %}" >Here</a></p>
+            {% endif %}
           {% else %}
           <p>You are not logged in. Login <a href= "{% url 'login' %}" >Here</a> or register <a href= "{% url 'register' %}" >Here</a> </p>
           {% endif %}
