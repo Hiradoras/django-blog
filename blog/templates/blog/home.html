@@ -14,78 +14,75 @@ Woermind Home
 
 <div class="container">
   <div class="row">
+    <!-- Profile Card -->
     <div class="col">
-      <!-- Profile Card -->
-{% if user.is_authenticated %}
-{% if user.profile %}
-<div class="card" style="width: 18rem;">
-  {% if user.profile.profile_pic %}
-<img src="{{user.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="...">
-{% else %}
-<img src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle">
-{% endif %}
-  <div class="card-body">
-    <h6 class="card-title">{{user}} - {{user.first_name}} {{user.last_name}}</h6>
-    <p class="card-text">{{user.profile.bio}}</p>
-    
-    <a href="{% url 'show-profile' user.profile.id %}" class="btn btn-primary">Go Profile</a>
-  </div>
-</div>
-<!-- Profile Card -->
-    </div>
-    <div class="col-6">
-    {% endif %}
-    {% endif %}
-      
-<!-- Posts -->
-<ul>
-  {% for post in object_list %}
-  <li>
-      <h4>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="{% url 'show-profile' post.author.profile.id %}">{{post.author}}</a></i></h4> 
-      <h5><u>{{post.title}}</u></h5>
-      {{post.body|safe}}
-      {{post.date_added}}
-      <br/><br/>
-      <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
-      <hr>
-  </li>
-  {% endfor %}
-</ul>
-<!-- Posts -->
-
-    </div>
-    <div class="col">
-      <h1>Users</h1>
-      {% for u in user_list %}<small>
-        {% if u.profile.profile_pic %}
-          <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:50px" src="{{u.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="..."></a>
+      {% if user.is_authenticated %}
+      {% if user.profile %}
+      <div class="card" style="width: 18rem;">
+        {% if user.profile.profile_pic %}
+        <img src="{{user.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="...">
         {% else %}
-          <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:300px" src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle"></a>
+        <img src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle">
         {% endif %}
-      </small>
-      {% endfor %}
+        <div class="card-body">
+          <h6 class="card-title">{{user}} - {{user.first_name}} {{user.last_name}}</h6>
+          <p class="card-text">{{user.profile.bio}}</p>
+          <a href="{% url 'show-profile' user.profile.id %}" class="btn btn-primary">Go Profile</a>
+        </div>
+      </div>
+      {% else %}
+      <div class="card" style="width: 18rem;">
+        <img src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle">
+        <div class="card-body">
+          <h6 class="card-title">Guest</h6>
+          <p class="card-text">Guest</p>
+          </div>
+        </div>
+      {% endif %}
+      {% else %}
+      <div class="card" style="width: 18rem;">
+        <img src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle">
+        <div class="card-body">
+          <h6 class="card-title">Guest</h6>
+          <p class="card-text">Guest</p>
+          </div>
+        </div>
+      {% endif %}
     </div>
+          
+            
 
 
-      {% comment %} <h1>Your Posts</h1>
-      <ul>
-        {% for post in object_list %}
-        {% if post.author == user %}
-        <li>
-          <h6>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="{% url 'show-profile' post.author.profile.id %}">{{post.author}}</a></i></h6> 
-          <h6><u>{{post.title}}</u></h6>
-          {{post.body|safe}}
-          {{post.date_added}}
-          <br/><br/>
-          <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
-          <hr>
+<!-- Posts -->
+<div class="col-6">
+  <ul>
+    {% for post in object_list %}
+      <li>
+        <h4>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="{% url 'show-profile' post.author.profile.id %}">{{post.author}}</a></i></h4> 
+        <h5><u>{{post.title}}</u></h5>
+        {{post.body|safe}}
+        {{post.date_added}}
+        <br/><br/>
+        <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
+        <hr>
       </li>
-        {% endif %}
-        
-        {% endfor %}
-      </ul> {% endcomment %}
-    </div>
-  </div>
+    {% endfor %}
+</ul>
+</div>
+<!-- Posts -->
+
+<div class="col">
+  <h1>Users</h1>
+  {% for u in user_list %}
+    {% if u.profile.profile_pic %}
+      <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:50px" src="{{u.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="..."></a>
+    {% else %}
+      <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:300px" src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle"></a>
+    {% endif %}
+  {% endfor %}
+</div>
+</div>
+</div>
 </div>
 
 
