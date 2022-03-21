@@ -55,7 +55,35 @@ Woermind Home
 
     </div>
     <div class="col">
-      3 of 3
+      <h1>Users</h1>
+      {% for u in user_list %}<small>
+        {% if u.profile.profile_pic %}
+          <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:50px" src="{{u.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="..."></a>
+        {% else %}
+          <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:300px" src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle"></a>
+        {% endif %}
+      </small>
+      {% endfor %}
+    </div>
+
+
+      {% comment %} <h1>Your Posts</h1>
+      <ul>
+        {% for post in object_list %}
+        {% if post.author == user %}
+        <li>
+          <h6>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="{% url 'show-profile' post.author.profile.id %}">{{post.author}}</a></i></h6> 
+          <h6><u>{{post.title}}</u></h6>
+          {{post.body|safe}}
+          {{post.date_added}}
+          <br/><br/>
+          <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
+          <hr>
+      </li>
+        {% endif %}
+        
+        {% endfor %}
+      </ul> {% endcomment %}
     </div>
   </div>
 </div>

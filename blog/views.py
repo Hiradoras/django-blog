@@ -1,4 +1,5 @@
 from msilib.schema import ListView
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
@@ -6,12 +7,19 @@ from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 
 class HomeView(ListView):
     model = Post
     template_name = 'blog/home.html'
     ordering = ['-date_added']
+
+
+    def get_context_data(self,**kwargs):
+        context = super(HomeView,self).get_context_data(**kwargs)
+        context['user_list'] = User.objects.all()
+        return context
 
     def form_valid(self, form):
         form.instance.user = self.request.user
