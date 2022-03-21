@@ -10,9 +10,11 @@ Edit Settings
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p}}
-    <button  class="btn btn-secondary">Update Profile</button>
+    <button  class="btn btn-warning">Update Profile</button>
     <br/><br/>
-{% else %}
+
+<a class ="btn btn-info" href="{% url 'change-password' %}">Change Password</a>
+    {% else %}
 You are not logged in
 {% endif %}
 

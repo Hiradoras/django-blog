@@ -69,7 +69,7 @@ class EditSettingsView(generic.UpdateView):
 
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangingForm
-    success_url = reverse_lazy('password_change_success.html')
+    success_url = reverse_lazy('login')
 
 def password_success(request):
     return render(request, 'registration/password_success.html')

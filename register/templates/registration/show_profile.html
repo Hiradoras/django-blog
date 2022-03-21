@@ -19,7 +19,7 @@
     <div class="row g-0">
       <div class="col-md-4">
         {% if profile.profile_pic %}
-            <img src="{{profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="...">
+            <img style="width:auto; height:300px" src="{{profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="...">
         {% else %}
             <img src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle">
         {% endif %}
@@ -52,6 +52,8 @@
   </div>
   {% if profile.user.id == user.id %}
   <a href="{% url 'edit-profile' profile.id %} " class="btn btn-primary">Edit Profile</a>
+  <a href="{% url 'edit-settings' profile.user.id %} " class="btn btn-primary">Edit Settings</a>
+  <a href="{% url 'change-password' %} " class="btn btn-warning">Change Password</a>   
   {% endif %}
 </div>
 
