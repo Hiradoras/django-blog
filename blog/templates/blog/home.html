@@ -49,17 +49,13 @@ Woermind Home
         </div>
       {% endif %}
     </div>
-          
-            
-
-
 <!-- Posts -->
 <div class="col-6">
   <ul>
     {% for post in object_list %}
       <li>
         <h4>{{post.author.first_name}} {{post.author.last_name}} / <i><a href="{% url 'show-profile' post.author.profile.id %}">{{post.author}}</a></i></h4> 
-        <h5><u>{{post.title}}</u></h5>
+        <h5><i>{{post.title}}</i></h5>
         {{post.body|safe}}
         {{post.date_added}}
         <br/><br/>
@@ -74,10 +70,12 @@ Woermind Home
 <div class="col">
   <h1>Users</h1>
   {% for u in user_list %}
+    {% if u.profile %}
     {% if u.profile.profile_pic %}
       <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:50px" src="{{u.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="..."></a>
     {% else %}
       <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:300px" src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle"></a>
+    {% endif %}
     {% endif %}
   {% endfor %}
 </div>
