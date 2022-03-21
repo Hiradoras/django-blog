@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
-from .forms import EditProfileForm, ProfileForm, RegisterForm
+from .forms import EditSettingsForm, ProfileForm, RegisterForm
 from blog.models import Profile
 from django.views.generic import CreateView, DetailView, UpdateView
 from django.views import generic
@@ -57,10 +57,11 @@ class EditProfilePageView(generic.UpdateView):
         ]
     success_url = reverse_lazy('home')
 
-class UserEditView(generic.UpdateView):
-    form_class = EditProfileForm
-    template_name = 'registration/edit_user.html'
+class EditSettingsView(generic.UpdateView):
+    form_class = EditSettingsForm
+    template_name = 'registration/edit_settings.html'
     success_url = reverse_lazy('home')
 
     def get_object(self):
         return self.request.user
+        

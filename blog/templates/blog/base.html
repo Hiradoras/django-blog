@@ -31,11 +31,10 @@
                   {% if user.is_authenticated %}
                   {% if user.profile %}
                   <li><a class="dropdown-item" href="{% url 'edit-profile' user.profile.id %}">Edit Profile</a></li>
-
                   {% else %}
                     <li><a class="dropdown-item" href="{% url 'create-profile' %}">Create Profile</a></li>
-
                   {% endif %}
+                  <li><a class="dropdown-item" href="{% url 'edit-settings' user.id %}">Edit User Settings</a></li>
                   {% else %}
                   
                   {% endif %}
