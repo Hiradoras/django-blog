@@ -62,7 +62,6 @@
   <ul>
 
     {% for post in post_list %}
-      {% if post.author == profile.user %}
         <li>
           <h5><i>{{post.title}}</i></h5>
           {{post.body|safe}}
@@ -71,7 +70,6 @@
           <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
           <hr>
         </li>
-      {% endif %}
     {% endfor %}
 </ul>
 </div>
