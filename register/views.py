@@ -36,7 +36,6 @@ class ShowProfilePageView(DetailView):
     template_name = 'registration/show_profile.html'    
 
     def get_context_data(self,*args, **kwargs):
-        # users = Profile.objects.all()
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         context['page_user'] = page_user
@@ -47,7 +46,6 @@ class ShowProfilePageView(DetailView):
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         post_list_for_count = Post.objects.all().filter(author=page_user.user)
         post_list = Post.objects.filter(author=page_user.user)
-        #context['post_list'] = post_list
         context['post_list'] = post_list.order_by('-date_added')
         context['post_count'] = post_list_for_count.count()
         return context

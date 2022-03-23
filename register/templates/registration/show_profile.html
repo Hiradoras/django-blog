@@ -26,6 +26,7 @@
         <div class="card-body">
           <h5 class="card-title">{{profile}} / {{profile.user.first_name}} {{profile.user.last_name}}</h5>
           <p class="card-text">{{profile.bio}}</p>
+          <p>Post count: {{post_count}}</p>
           {% if profile.website_url %}
           <a href="{{profile.website_url}}">Website</a>| 
           {% endif %}
@@ -58,9 +59,8 @@
 <div class="container">
   <h1>Posts by {{profile.user}}</h1>
   <h5>Post count: {{post_count}}</h5>
-
+  {% if post_count %}
   <ul>
-
     {% for post in post_list %}
         <li>
           <h5><i>{{post.title}}</i></h5>
@@ -71,12 +71,11 @@
           <hr>
         </li>
     {% endfor %}
-</ul>
+  </ul>
+  {% else %}
+    <p>{{profile.user}} hasn't posted anything yet.</p>
+  {% endif %}
 </div>
-
-
-
-
 
 {% endblock  %}
     
