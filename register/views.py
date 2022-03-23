@@ -1,11 +1,12 @@
+import profile
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from .forms import EditSettingsForm, ProfileForm, RegisterForm, PasswordChangingForm
-from blog.models import Profile
+from blog.models import Post, Profile
 from django.views.generic import CreateView, DetailView, UpdateView
 from django.views import generic
 from django.contrib.auth.views import PasswordChangeView
-
+from django.db.models import Count
 
 
 def register(response):
@@ -32,17 +33,23 @@ class CreateProfileView(CreateView):
 
 class ShowProfilePageView(DetailView):
     model = Profile
-    template_name = 'registration/show_profile.html'
+    template_name = 'registration/show_profile.html'    
 
     def get_context_data(self,*args, **kwargs):
-        users = Profile.objects.all()
+        # users = Profile.objects.all()
         context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
-        
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
-
         context['page_user'] = page_user
         return context
-
+    
+    def get_context_data(self,**kwargs):
+        context = super(ShowProfilePageView,self).get_context_data(**kwargs)
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        post_list_for_count = Post.objects.all().filter(author=page_user.user)
+        context['post_list'] = Post.objects.all()
+        context['post_list'] = Post.objects.order_by('-date_added')
+        context['post_count'] = post_list_for_count.count()
+        return context
 
 class EditProfilePageView(generic.UpdateView):
     model =Profile

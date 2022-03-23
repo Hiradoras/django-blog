@@ -10,8 +10,6 @@
 {% block content %}
 
 
-
-
 <p></p>
 
 <div class="container">
@@ -56,6 +54,28 @@
   <a href="{% url 'change-password' %} " class="btn btn-warning">Change Password</a>   
   {% endif %}
 </div>
+
+<div class="container">
+  <h1>Posts by {{profile.user}}</h1>
+  <h5>Post count: {{post_count}}</h5>
+
+  <ul>
+
+    {% for post in post_list %}
+      {% if post.author == profile.user %}
+        <li>
+          <h5><i>{{post.title}}</i></h5>
+          {{post.body|safe}}
+          {{post.date_added}}
+          <br/><br/>
+          <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
+          <hr>
+        </li>
+      {% endif %}
+    {% endfor %}
+</ul>
+</div>
+
 
 
 

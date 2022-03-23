@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
+from django.db.models import Count
 
 
 class Post(models.Model):
@@ -25,11 +26,13 @@ class Profile(models.Model):
     instagram_url = models.CharField(max_length=255, null=True, blank=True)
     pinterest_url = models.CharField(max_length=255, null=True, blank=True)
     other_url = models.CharField(max_length=255, null=True, blank=True)
-     
+    posts = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('home')   
+        return reverse('home')
+    
+
 
