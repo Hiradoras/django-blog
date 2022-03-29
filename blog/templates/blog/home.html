@@ -77,7 +77,6 @@ Woermind Home
         {% if post.author.id == user.id %}
         <a href="{% url 'edit-post' post.pk %}" class='btn btn-info'>Edit Post</a>
         <a href="{% url 'delete-post' post.pk %}" class="btn  btn-danger">Delete</a>
-
         {% endif %}
         <hr>
       </li>
