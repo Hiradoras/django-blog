@@ -70,8 +70,9 @@ Woermind Home
         {% endif %}
         </div>
         <h5><i>{{post.title}}</i></h5>
-        {{post.body|safe}}
-        {{post.date_added}}
+        {{post.body|slice:":200"|safe}}
+        <br/>
+        <small><b>{{post.date_added}}</b></small>
         <br/><br/>
         <a href="{% url 'post-detail' post.pk %}" class="btn btn-primary">Read</a>
         {% if post.author.id == user.id %}
