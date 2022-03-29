@@ -2,9 +2,9 @@ from msilib.schema import ListView
 from re import template
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Post
-from .forms import PostForm
+from .forms import EditPostForm, PostForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
@@ -54,3 +54,11 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'blog/delete_post.html'
     success_url = reverse_lazy('home')
+
+class EditPostView(UpdateView):
+    model = Post
+    form_class = EditPostForm
+    template_name = 'blog/edit_post.html'
+    success_url = reverse_lazy('home')
+    
+

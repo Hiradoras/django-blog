@@ -73,8 +73,9 @@ Woermind Home
         {{post.body|safe}}
         {{post.date_added}}
         <br/><br/>
-        <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
+        <a href="{% url 'post-detail' post.pk %}" class="btn btn-primary">Read</a>
         {% if post.author.id == user.id %}
+        <a href="{% url 'edit-post' post.pk %}" class='btn btn-info'>Edit Post</a>
         <a href="{% url 'delete-post' post.pk %}" class="btn  btn-danger">Delete</a>
 
         {% endif %}
