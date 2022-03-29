@@ -12,6 +12,9 @@ Woermind Home
     #intro h4{
       display: inline;
     }
+    #users{
+
+    } 
 </style>
 <h1>Posts</h1>
 <hr>
@@ -22,7 +25,7 @@ Woermind Home
     <div class="col">
       {% if user.is_authenticated %}
       {% if user.profile %}
-      <div class="card" style="width: 18rem;">
+      <div id='profile'  class="card" style="width: 18rem;">
         {% if user.profile.profile_pic %}
         <img src="{{user.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="...">
         {% else %}
@@ -71,6 +74,10 @@ Woermind Home
         {{post.date_added}}
         <br/><br/>
         <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>
+        {% if post.author.id == user.id %}
+        <a href="{% url 'delete-post' post.pk %}" class="btn  btn-danger">Delete</a>
+
+        {% endif %}
         <hr>
       </li>
     {% endfor %}
@@ -78,7 +85,7 @@ Woermind Home
 </div>
 <!-- Posts -->
 
-<div class="col">
+<div id="users" class="col">
   <h1>Users</h1>
   {% for u in user_list %}
     {% if u.profile %}

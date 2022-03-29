@@ -1,7 +1,8 @@
 from msilib.schema import ListView
+from re import template
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import Post
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
@@ -49,3 +50,7 @@ class AddPostView(CreateView):
 
     success_url = reverse_lazy('home')
     
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'blog/delete_post.html'
+    success_url = reverse_lazy('home')

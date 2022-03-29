@@ -7,6 +7,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class="container">
 <br/>
 <h1>{{post.title}}</h1>
 <small>by: <b>{{post.author.first_name}} {{post.author.last_name}}</b> / <i>{{post.author}}</i>
@@ -52,5 +53,5 @@
       </div>
     </div>
   </div>
-
+</div>
 {% endblock content %}
