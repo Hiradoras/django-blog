@@ -70,7 +70,7 @@ Woermind | Home
         {% endif %}
         </div>
         <h5><i>{{post.title}}</i></h5>
-        {{post.body|slice:":200"|safe}}
+        {{post.body|slice:":200"|safe}}<a href="{% url 'post-detail' post.pk %}">. . .</a>
         <br/>
         <small><b>{{post.date_added}}</b></small>
         <br/><br/>
@@ -88,7 +88,10 @@ Woermind | Home
 
 <div id="users" class="col">
   <h1>Users</h1>
+  <hr>
   {% for u in user_list %}
+  {% for posts in object_list %}
+  {% endfor %}
     {% if u.profile %}
     {% if u.profile.profile_pic %}
       <a href="{% url 'show-profile' u.profile.id %}"><img style="width:auto; height:50px" src="{{u.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="..."></a>

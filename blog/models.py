@@ -27,12 +27,15 @@ class Profile(models.Model):
     pinterest_url = models.CharField(max_length=255, null=True, blank=True)
     other_url = models.CharField(max_length=255, null=True, blank=True)
     posts = models.IntegerField(default=0)
-
+    # posts = Post.objects.filter(author=user).count()
     def __str__(self) -> str:
         return str(self.user)
 
     def get_absolute_url(self):
         return reverse('home')
+
+
+    
     
 
 
