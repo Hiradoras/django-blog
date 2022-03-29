@@ -18,8 +18,15 @@ class HomeView(ListView):
 
 
     def get_context_data(self,**kwargs):
+        all_users = User.objects.all()
+        posts = Post.objects.all()
+        users_to_show = []
+        for u in all_users:
+            post_count = posts.filter(author=u).count()
+            if post_count > 0:
+                users_to_show.append(u)
         context = super(HomeView,self).get_context_data(**kwargs)
-        context['user_list'] = User.objects.all()
+        context['user_list'] = users_to_show
         return context
 
     def form_valid(self, form):
