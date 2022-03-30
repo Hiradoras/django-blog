@@ -46,8 +46,10 @@ INSTALLED_APPS = [
 
     # 3rd party
     'ckeditor',
-    'crispy_forms'
-]
+    'crispy_forms',
+    'fontawesomefree'
+    
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
