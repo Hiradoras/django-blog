@@ -60,7 +60,7 @@
     {% for post in post_list %}
         <li>
           <h5><i>{{post.title}}</i></h5>
-          {{post.body|safe}}
+          {{post.body|slice:":150"|safe}}<a href="{% url 'post-detail' post.pk %}">. . . read more</a><br/>
           {{post.date_added}}
           <br/><br/>
           <a href="{% url 'post-detail' post.pk %}" class="btn btn-info">Read</a>

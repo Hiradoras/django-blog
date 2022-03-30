@@ -16,7 +16,7 @@ Woermind | Home
 
     } 
 </style>
-<h1>Posts</h1>
+
 <hr>
 
 <div class="container">
@@ -58,6 +58,8 @@ Woermind | Home
     </div>
 <!-- Posts -->
 <div class="col-6">
+  <h1>Posts</h1>
+  <hr>
   <ul>
     {% for post in object_list %}
       <li>
@@ -70,7 +72,7 @@ Woermind | Home
         {% endif %}
         </div>
         <h5><i>{{post.title}}</i></h5>
-        {{post.body|slice:":200"|safe}}<a href="{% url 'post-detail' post.pk %}">. . .</a>
+        {{post.body|slice:":150"|safe}}<a href="{% url 'post-detail' post.pk %}">. . . read more</a>
         <br/>
         <small><b>{{post.date_added}}</b></small>
         <br/><br/>
