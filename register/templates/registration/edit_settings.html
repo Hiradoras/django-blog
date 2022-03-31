@@ -4,12 +4,15 @@
 Edit Settings
 {% endblock  %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="container">
 {% if user.is_authenticated %}
+<br/>
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p}}
+    {{ form|crispy}}
     <button  class="btn btn-warning">Update Profile</button>
     <br/><br/>
 

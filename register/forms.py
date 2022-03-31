@@ -59,7 +59,7 @@ class EditSettingsForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name','last_name','username','password')
+        fields = ('email', 'first_name','last_name','username')
 
 class PasswordChangingForm(PasswordChangeForm):
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))

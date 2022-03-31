@@ -26,12 +26,14 @@
   </head>
   <body>
     <style>
-      #home{
-        background-color: brown;
+      .navbar-nav > li{
+        margin-left:5px;
+        margin-right:5px;
       }
     </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'blogpost/images/favicon.ico' %}"></a>
           <a class="navbar-brand" href="{% url 'home' %}">Woermind</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

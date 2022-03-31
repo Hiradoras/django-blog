@@ -19,7 +19,7 @@ class Post(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField((""), upload_to='images/profile', null=True, blank=True)
-    date_joined = models.DateTimeField(auto_now_add=True)
+    date_joined = models.DateField(auto_now_add=True)
 
     bio = models.TextField(null=True, blank=True)
     website_url = models.CharField(max_length=255, null=True, blank=True)

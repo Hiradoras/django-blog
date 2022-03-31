@@ -21,8 +21,9 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{profile}} / {{profile.user.first_name}} {{profile.user.last_name}}</h5>
-          <p class="card-text">{{profile.bio}}</p>
-          <p>Post count: {{post_count}}</p>
+          <p class="card-text"><i>{{profile.bio}}</i></p>
+          <p>Post count: <b>{{post_count}}</b></p>
+          <p>Date Join: <b>{{profile.date_joined}}</b></p>
           {% if profile.website_url %}
           <a href="{{profile.website_url}}">Website</a>| 
           {% endif %}
