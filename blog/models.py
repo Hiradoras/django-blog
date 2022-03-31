@@ -7,6 +7,7 @@ from django.db.models import Count
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    snippet = models.TextField(max_length=255)
     body = RichTextField()
     date_added = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)

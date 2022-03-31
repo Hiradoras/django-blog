@@ -72,7 +72,7 @@ Woermind | Home
         {% endif %}
         </div>
         <h5><i>{{post.title}}</i></h5>
-        {{post.body|slice:":150"|safe}}<a href="{% url 'post-detail' post.pk %}">. . . read more</a>
+        {{post.snippet}}<a href="{% url 'post-detail' post.pk %}">. . . read more</a>
         <br/>
         <small><b>{{post.date_added}}</b></small>
         <br/><br/>
