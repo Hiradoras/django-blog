@@ -38,7 +38,7 @@ class PostDetailView(DetailView):
     template_name  = 'blog/post_detail.html'
 
 class AddPostView(CreateView):
-    model =Post
+    model = Post
     form_class = PostForm
     template_name = 'blog/add_post.html'
 
