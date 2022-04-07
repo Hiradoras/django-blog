@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     # 3rd party
     'ckeditor',
     'crispy_forms',
-    'fontawesomefree'
+    'fontawesomefree',
+    'django_quill' 
     
     ]
 

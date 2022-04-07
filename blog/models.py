@@ -21,7 +21,7 @@ class Profile(models.Model):
     profile_pic = models.ImageField((""), upload_to='images/profile', null=True, blank=True)
     date_joined = models.DateField(auto_now_add=True)
 
-    bio = models.TextField(null=True, blank=True)
+    bio = models.TextField(max_length=500, null=True, blank=True)
     website_url = models.CharField(max_length=255, null=True, blank=True)
     facebook_url = models.CharField(max_length=255, null=True, blank=True)
     twitter_url = models.CharField(max_length=255, null=True, blank=True)

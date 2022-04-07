@@ -2,12 +2,13 @@ from dataclasses import field
 from tkinter import Widget
 from django import forms
 from django.contrib.auth.models import User
+from django_quill.forms import QuillFormField
 from .models import(
     Post
 )
 
-
 class PostForm(forms.ModelForm):
+    content = QuillFormField()
     class Meta:
         model = Post
         fields = ('title', 'body','snippet')
