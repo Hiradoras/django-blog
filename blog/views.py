@@ -38,6 +38,7 @@ class HomeView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name  = 'blog/post_detail.html'
+    slug_field = "slug"
 
     form = CommentForm
 
@@ -45,7 +46,7 @@ class PostDetailView(DetailView):
         form = CommentForm(requset.POST)
         if form.is_valid():
             post = self.get_object()
-            form.instance.user = self.requset.user
+            form.instance.user = requset.user
             form.instance.post = post
             form.save()
 
