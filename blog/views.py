@@ -2,10 +2,11 @@ from audioop import reverse
 from msilib.schema import ListView
 from re import template
 import re
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from .models import Post
+from .models import Post, Comment
 from .forms import  EditPostForm, PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -38,7 +39,6 @@ class HomeView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name  = 'blog/post_detail.html'
-    slug_field = "slug"
 
     form = CommentForm
 
@@ -50,13 +50,19 @@ class PostDetailView(DetailView):
             form.instance.post = post
             form.save()
 
-            return redirect(reverse("post", kwargs={
-                "slug": post.slug
-            }))
-    
+            return redirect("home") 
+
+            
     def get_context_data(self, **kwargs):
+        post_comment_count = Comment.objects.all().filter(post=self.object.id).count()
+        post_comments = Comment.objects.all().filter(post=self.object.id)
         context = super().get_context_data(**kwargs)
-        context["form"] = self.form  
+        context.update({
+            'form': self.form,
+            'post_comments' : post_comments,
+            'post_comment_count' : post_comment_count,
+        })
+        
         return context
     
 
