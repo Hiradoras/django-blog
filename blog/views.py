@@ -1,10 +1,12 @@
+from audioop import reverse
 from msilib.schema import ListView
 from re import template
-from django.shortcuts import render
+import re
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Post
-from .forms import EditPostForm, PostForm
+from .forms import  EditPostForm, PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
@@ -37,6 +39,29 @@ class PostDetailView(DetailView):
     model = Post
     template_name  = 'blog/post_detail.html'
 
+    form = CommentForm
+
+    def post(self, requset, *args, **kwargs):
+        form = CommentForm(requset.POST)
+        if form.is_valid():
+            post = self.get_object()
+            form.instance.user = self.requset.user
+            form.instance.post = post
+            form.save()
+
+            return redirect(reverse("post", kwargs={
+                "slug": post.slug
+            }))
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = self.form  
+        return context
+    
+
+
+
+
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
@@ -68,4 +93,5 @@ class EditPostView(UpdateView):
     template_name = 'blog/edit_post.html'
     success_url = reverse_lazy('home')
     
+
 

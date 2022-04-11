@@ -37,7 +37,14 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse('home')
 
+class Comment(models.Model):
+    commentor = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey("Post", on_delete=models.CASCADE)
+    content = models.TextField(max_length=400)
 
+    def __str__(self):
+        return self.user.usarname
     
     
 
