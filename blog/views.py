@@ -39,7 +39,6 @@ class HomeView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name  = 'blog/post_detail.html'
-
     form = CommentForm
 
     def post(self, requset, *args, **kwargs):
@@ -54,6 +53,8 @@ class PostDetailView(DetailView):
 
             
     def get_context_data(self, **kwargs):
+        post = self.get_object()
+        post_word_count = (post.content)
         post_comment_count = Comment.objects.all().filter(post=self.object.id).count()
         post_comments = Comment.objects.all().filter(post=self.object.id)
         context = super().get_context_data(**kwargs)
@@ -61,13 +62,11 @@ class PostDetailView(DetailView):
             'form': self.form,
             'post_comments' : post_comments,
             'post_comment_count' : post_comment_count,
+            'post_word_count' : post_word_count,
         })
         
         return context
     
-
-
-
 
 class AddPostView(CreateView):
     model = Post
