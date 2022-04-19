@@ -12,9 +12,9 @@
                 <form method="POST">
                 {% csrf_token %}
                 <strong>Are you sure?</strong><br/><br/>
-                <button class="btn btn-danger">Delete</button>  {% comment %} <a href="{% url 'article-detail' post.pk %}" class='btn btn-info'>Cancel</a> {% endcomment %}
-                
-        </div>
+                <button class="btn btn-danger">Delete</button>
+                <a href="{% url 'home' %}" class='btn btn-info'>Cancel</a> 
+            </div>
     {% endif %}
 {% else %}
 You are not logged in

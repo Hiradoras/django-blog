@@ -43,10 +43,14 @@
                 <a href="{% url 'show-profile' comment.user.profile.id %}">
                 <b> {{comment.user}} </b>
                 </a>
-                <time class="ml-4 opacity-70 small-3"> {{comment.date_added}} </time>
               </div>
-              <p> {{comment.content}} </p>
+              <h6> {{comment.content}} </h6>
+              <time class="ml-4 opacity-70 small-3"> {{comment.date_added}} </time>
             </div>
+            {% if user.id == comment.user.id %}
+            <a href="" class="btn btn-secondary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+            {% endif %}
           </div>
           <hr>
           {% endfor %}

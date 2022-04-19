@@ -98,6 +98,3 @@ class EditPostView(UpdateView):
     form_class = EditPostForm
     template_name = 'blog/edit_post.html'
     success_url = reverse_lazy('home')
-    
-
-
