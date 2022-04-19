@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Delete Comment{% endblock title %}
+
+{% block content %}
+<div class="container">
+{% if user.is_authenticated %}
+    {% if user.id == comment.user.id %}
+        <div class='form-group'>
+            <h3>Delete this comment? -> {{comment.content}}</h3>
+                <br/><br/> 
+                <form method="POST">
+                {% csrf_token %}
+                <strong>Are you sure?</strong><br/><br/>
+                <button class="btn btn-danger">Delete</button>
+                <a href="{% url 'home' %}" class='btn btn-info'>Cancel</a> 
+            </div>
+    {% endif %}
+{% else %}
+You are not logged in
+
+{% endif %}
+
+    </div>
+{% endblock content %}

@@ -1,7 +1,4 @@
 from audioop import reverse
-from msilib.schema import ListView
-from re import template
-import re
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -97,4 +94,9 @@ class EditPostView(UpdateView):
     model = Post
     form_class = EditPostForm
     template_name = 'blog/edit_post.html'
+    success_url = reverse_lazy('home')
+
+class DeleteCommentView(DeleteView):
+    model = Comment
+    template_name = 'blog/delete_comment.html'
     success_url = reverse_lazy('home')
