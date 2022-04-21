@@ -48,7 +48,6 @@
               <time class="ml-4 opacity-70 small-3"> {{comment.date_added}} </time>
             </div>
             {% if user.id == comment.user.id %}
-            <a href="" class="btn btn-secondary">Edit</a>
             <a href="{% url 'delete-comment' comment.pk %}" class="btn btn-danger">Delete</a>
             {% endif %}
           </div>
