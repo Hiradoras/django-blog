@@ -1,11 +1,8 @@
 {% extends 'blog/base.html' %}
-
 {% load static %}
-
 {% block title %}
 {{post.title}}
 {% endblock title %}
-
 {% block content %}
 <div class="container">
 <br/>
@@ -30,7 +27,6 @@
         <div class="media-list">
           {% for comment in post_comments %}
           <div>
-            
             {% if comment.user.profile.profile_pic %}
             <a href="{% url 'show-profile' comment.user.profile.id %}">
             <img style="width:auto; height:50px" src="{{comment.user.profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="pp">
@@ -54,7 +50,6 @@
           <hr>
           {% endfor %}
         </div>
-
         <!--Display Form-->
         <form method="POST" action="{% url 'post-detail' post.pk %}">
           {% csrf_token %}
@@ -62,7 +57,6 @@
             {{form}}
           </div>
           <button class="btn btn-primary btn-block" type="submit" >Comment</button>
-
         </form>
       </div>
     </div>
@@ -70,6 +64,8 @@
 </div>
 <br/><br/>
 <hr>
+<!--profile card-->
+<h1>Writer</h1>
 <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
@@ -79,8 +75,6 @@
             <img src="{% static 'blogpost/images/default_profile_pic.jpg' %}" class="img-fluid rounded-circle">
         {% endif %}
       </div>
-
-      <!--profile card-->
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{post.author}} / <small>{{post.author.first_name}} {{post.author.last_name}}</small></h5>
@@ -104,7 +98,6 @@
           {% if post.author.profile.other_url %}
             <a href="{{post.author.profile.other_url}}">Other</a>
           {% endif %}
-          
         </div>
       </div>
     </div>
